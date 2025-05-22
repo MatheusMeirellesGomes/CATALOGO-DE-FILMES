@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha seu Perfil - Matheus Flix</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 1)), url('public2/images/senhordosaneis3.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
+        }
+        .section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        .brand-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: #f4030f !important;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            margin-bottom: 2.5rem;
+            animation: slideIn 0.8s ease-out;
+        }
+        .register-form {
+            background: rgba(20, 20, 20, 0.9);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .register-form .form-control {
+            background-color: #333333;
+            border: none;
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-family: 'Roboto', sans-serif;
+            padding: 0.8rem;
+            width: 100%;
+        }
+        .register-form .form-control::placeholder {
+            color: #cccccc;
+        }
+        .register-form .btn-primary {
+            background-color: #e50914;
+            border: none;
+            font-weight: 600;
+            font-size: 1.3rem;
+            padding: 0.8rem 2rem;
+            width: auto;
+            transition: background-color 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+        }
+        .register-form .btn-primary:hover {
+            background-color: #c40812;
+        }
+        .profiles-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            justify-content: center;
+            max-width: 800px;
+        }
+        .profile {
+            width: 160px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(20, 20, 20, 0.8);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        .profile:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 20px rgba(229, 9, 20, 0.6);
+        }
+        .profile img {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 3px solid #666666;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .profile.kids img {
+            border-color: #46d369;
+        }
+        .profile:hover img {
+            border-color: #e50914;
+            transform: rotate(3deg);
+        }
+        .profile p {
+            font-size: 1.3rem;
+            color: #b3b3b3;
+            margin-top: 0.8rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .delete-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #e50914;
+            border: none;
+            color: #ffffff;
+            font-size: 0.9rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .delete-btn:hover {
+            background-color: #c40812;
+        }
+        .back-btn {
+            background-color: #666666;
+            border: none;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.3rem;
+            padding: 0.8rem 2rem;
+            margin-top: 2rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+        }
+        .back-btn:hover {
+            background-color: #555555;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .d-none {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .brand-title {
+                font-size: 3.5rem;
+            }
+            .section h1 {
+                font-size: 2.2rem;
+            }
+            .register-form {
+                padding: 1.5rem;
+            }
+            .register-form .form-control {
+                font-size: 1.2rem;
+            }
+            .register-form .btn-primary {
+                font-size: 1.2rem;
+                padding: 0.8rem 1.5rem;
+            }
+            .profile {
+                width: 130px;
+                padding: 0.8rem;
+            }
+            .profile img {
+                width: 100px;
+                height: 100px;
+            }
+            .profile p {
+                font-size: 1.1rem;
+            }
+            .profiles-container {
+                gap: 2rem;
+            }
+            .back-btn {
+                font-size: 1.2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .brand-title {
+                font-size: 2.8rem;
+            }
+            .section h1 {
+                font-size: 1.8rem;
+            }
+            .register-form {
+                padding: 1rem;
+            }
+            .register-form .form-control {
+                font-size: 1.1rem;
+            }
+            .register-form .btn-primary {
+                font-size: 1.1rem;
+                padding: 0.8rem 1rem;
+            }
+            .profile {
+                width: 110px;
+                padding: 0.6rem;
+            }
+            .profile img {
+                width: 80px;
+                height: 80px;
+            }
+            .profile p {
+                font-size: 1rem;
+            }
+            .profiles-container {
+                gap: 1.5rem;
+            }
+            .back-btn {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <header class="fixed-top navbar navbar-expand-lg py-3 navbar-custom" id="main-header">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand navbar-brand-custom" href="index.html">MATHEUS FLIX</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav d-flex">
+                    <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="index.html">Início</a></li>
+                    <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="catalogo.html#destaques">Destaques</a></li>
+                    <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="catalogo.html#series">Séries</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="catalogo.html#contato">Minha lista</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="section register-section" id="registerSection">
+        <h1 class="brand-title">MATHEUS FLIX</h1>
+        <h1>Cadastre-se</h1>
+        <form class="register-form" id="registerForm">
+            <input type="text" class="form-control" id="name" placeholder="Nome" required>
+            <input type="email" class="form-control" id="email" placeholder="E-mail" required>
+            <input type="number" class="form-control" id="age" placeholder="Idade" required min="1">
+            <input type="password" class="form-control" id="password" placeholder="Senha" required>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </section>
+    <section class="section profile-section d-none" id="profileSection">
+        <h1 class="brand-title">MATHEUS FLIX</h1>
+        <h1>Quem está assistindo?</h1>
+        <div class="profiles-container" id="profilesContainer">
+        </div>
+        <button class="back-btn" onclick="showRegisterForm()">Voltar</button>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        if (!localStorage.getItem('users')) {
+            localStorage.setItem('users', JSON.stringify([]));
+        }
+
+        function registerUser(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const age = parseInt(document.getElementById('age').value);
+            const password = document.getElementById('password').value;
+
+            if (!name || !email || !age || !password) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            const isKid = age < 12;
+            const profileName = isKid ? `Crianças - ${name}` : name;
+            const profileImage = isKid ? 'public2/images/kids_profile.jpg' : 'public2/images/profile_default.jpg';
+            const users = JSON.parse(localStorage.getItem('users'));
+
+            if (users.some(user => user.email === email)) {
+                alert('Este e-mail já está cadastrado.');
+                return;
+            }
+
+            users.push({
+                name: profileName,
+                email,
+                age,
+                isKid,
+                profileImage
+            });
+            localStorage.setItem('users', JSON.stringify(users));
+            document.getElementById('registerForm').reset();
+            document.getElementById('registerSection').classList.add('d-none');
+            document.getElementById('profileSection').classList.remove('d-none');
+            loadProfiles();
+        }
+
+        function loadProfiles() {
+            const users = JSON.parse(localStorage.getItem('users'));
+            const container = document.getElementById('profilesContainer');
+            container.innerHTML = '';
+            users.forEach((user, index) => {
+                const profileDiv = document.createElement('div');
+                profileDiv.className = `profile ${user.isKid ? 'kids' : ''}`;
+                profileDiv.innerHTML = `
+                    <img src="${user.profileImage}" alt="Perfil ${user.name}">
+                    <p>${user.name}</p>
+                    <button class="delete-btn" onclick="deleteProfile(${index}, event)">X</button>
+                `;
+                profileDiv.onclick = (e) => {
+                    if (!e.target.classList.contains('delete-btn')) {
+                        selectProfile(user.name);
+                    }
+                };
+                container.appendChild(profileDiv);
+                profileDiv.style.animation = `fadeIn 0.5s ease-in-out ${index * 0.2}s forwards`;
+                profileDiv.style.opacity = '0';
+            });
+        }
+
+        function deleteProfile(index, event) {
+            event.stopPropagation();
+            if (confirm('Deseja excluir este perfil?')) {
+                const users = JSON.parse(localStorage.getItem('users'));
+                users.splice(index, 1);
+                localStorage.setItem('users', JSON.stringify(users));
+                loadProfiles();
+                if (users.length === 0) {
+                    showRegisterForm();
+                }
+            }
+        }
+
+        function showRegisterForm() {
+            document.getElementById('profileSection').classList.add('d-none');
+            document.getElementById('registerSection').classList.remove('d-none');
+        }
+
+        function selectProfile(profileName) {
+            window.location.href = './catalogo.html';
+        }
+
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const users = JSON.parse(localStorage.getItem('users'));
+            if (users.length > 0) {
+                document.getElementById('registerSection').classList.add('d-none');
+                document.getElementById('profileSection').classList.remove('d-none');
+                loadProfiles();
+            }
+            document.getElementById('registerForm').addEventListener('submit', registerUser);
+        });
+    </script>
+</body>
+</html>

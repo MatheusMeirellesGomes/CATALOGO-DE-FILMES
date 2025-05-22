@@ -1,0 +1,226 @@
+{
+  "filmes": [
+    {
+      "id": 1,
+      "title": "Animais Fantásticos e Onde Habitam",
+      "description": "O magizoologista Newt Scamander chega à Nova York com uma misteriosa maleta repleta de criaturas mágicas.",
+      "img": "public2/images/animaisfantasticos.jpg",
+      "year": 2016,
+      "duration": "2h 13min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "74%"
+    },
+    {
+      "id": 2,
+      "title": "Animais Fantásticos: Os Crimes de Grindelwald",
+      "description": "Grindelwald escapa da custódia e começa a recrutar seguidores para sua causa.",
+      "img": "public2/images/animaisfantasticos2.jpg",
+      "year": 2018,
+      "duration": "2h 14min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "64%"
+    },
+    {
+      "id": 3,
+      "title": "Animais Fantásticos: Os Segredos de Dumbledore",
+      "description": "Dumbledore confia em Newt Scamander para liderar uma missão perigosa contra Grindelwald.",
+      "img": "public2/images/animaisfantasticos3.jpg",
+      "year": 2022,
+      "duration": "2h 22min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "76%"
+    },
+    {
+      "id": 4,
+      "title": "Harry Potter e a Pedra Filosofal",
+      "description": "Harry Potter descobre que é um bruxo e ingressa em Hogwarts.",
+      "img": "public2/images/harrypotter1.jpg",
+      "year": 2001,
+      "duration": "2h 32min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "81%"
+    },
+    {
+      "id": 5,
+      "title": "Harry Potter e a Câmara Secreta",
+      "description": "Harry investiga a lenda da Câmara Secreta em seu segundo ano em Hogwarts.",
+      "img": "public2/images/harrypotter2.jpg",
+      "year": 2002,
+      "duration": "2h 41min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "82%"
+    },
+    {
+      "id": 6,
+      "title": "Harry Potter e o Prisioneiro de Azkaban",
+      "description": "Harry descobre sobre Sirius Black, um fugitivo de Azkaban, enquanto enfrenta novos perigos em Hogwarts.",
+      "img": "public2/images/harrypotter3.jpg",
+      "year": 2004,
+      "duration": "2h 22min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "90%"
+    },
+    {
+      "id": 7,
+      "title": "Harry Potter e o Cálice de Fogo",
+      "description": "Harry é escolhido para o Torneio Tribruxo e enfrenta desafios mortais enquanto Voldemort retorna.",
+      "img": "public2/images/harrypotter4.jpg",
+      "year": 2005,
+      "duration": "2h 37min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "88%"
+    },
+    {
+      "id": 8,
+      "title": "Harry Potter e a Ordem da Fênix",
+      "description": "Harry forma o Exército de Dumbledore para combater o Ministério e enfrenta visões de Voldemort.",
+      "img": "public2/images/harrypotter5.jpg",
+      "year": 2007,
+      "duration": "2h 18min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "78%"
+    },
+    {
+      "id": 9,
+      "title": "Harry Potter e o Enigma do Príncipe",
+      "description": "Harry descobre segredos sobre Voldemort e enfrenta tragédias enquanto Hogwarts é ameaçada.",
+      "img": "public2/images/harrypotter6.jpg",
+      "year": 2009,
+      "duration": "2h 33min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "84%"
+    },
+    {
+      "id": 10,
+      "title": "Harry Potter e as Relíquias da Morte - Parte 1",
+      "description": "Harry, Ron e Hermione caçam Horcruxes enquanto fogem dos Comensais da Morte.",
+      "img": "public2/images/harrypotter8.jpg",
+      "year": 2010,
+      "duration": "2h 26min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "79%"
+    },
+    {
+      "id": 11,
+      "title": "Harry Potter e as Relíquias da Morte - Parte 2",
+      "description": "Harry enfrenta Voldemort na batalha final em Hogwarts para salvar o mundo bruxo.",
+      "img": "public2/images/harrypotter8.jpg",
+      "year": 2011,
+      "duration": "2h 10min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "96%"
+    },
+    {
+      "id": 12,
+      "title": "O Senhor dos Anéis: A Sociedade do Anel",
+      "description": "Frodo, um hobbit, recebe um anel mágico e inicia uma jornada para destruí-lo.",
+      "img": "public2/images/senhordosaneis1.jpg",
+      "year": 2001,
+      "duration": "2h 58min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "91%"
+    },
+    {
+      "id": 13,
+      "title": "O Senhor dos Anéis: As Duas Torres",
+      "description": "A Sociedade se divide, e Frodo e Sam continuam sua missão enquanto a guerra se intensifica.",
+      "img": "public2/images/senhordosaneis2.jpg",
+      "year": 2002,
+      "duration": "2h 59min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "95%"
+    },
+    {
+      "id": 14,
+      "title": "O Senhor dos Anéis: O Retorno do Rei",
+      "description": "Frodo e Sam enfrentam perigos para destruir o Anel, enquanto a batalha final acontece em Gondor.",
+      "img": "public2/images/senhordosaneis3.jpg",
+      "year": 2003,
+      "duration": "3h 21min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "97%"
+    },
+    {
+      "id": 15,
+      "title": "O Hobbit: Uma Jornada Inesperada",
+      "description": "Bilbo Bolseiro parte em uma jornada para recuperar o reino dos anões.",
+      "img": "public2/images/hobbit1.jpg",
+      "year": 2012,
+      "duration": "2h 49min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "85%"
+    },
+    {
+      "id": 16,
+      "title": "O Hobbit: A Desolação de Smaug",
+      "description": "A companhia continua sua busca para derrotar o dragão Smaug.",
+      "img": "public2/images/hobbit2.jpg",
+      "year": 2013,
+      "duration": "2h 41min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "88%"
+    },
+    {
+      "id": 17,
+      "title": "O Hobbit: A Batalha dos Cinco Exércitos",
+      "description": "Os exércitos se enfrentam enquanto Bilbo tenta evitar uma guerra total.",
+      "img": "public2/images/hobbit3.jpg",
+      "year": 2014,
+      "duration": "2h 24min",
+      "genres": [
+        "Fantasia",
+        "Aventura"
+      ],
+      "rating": "84%"
+    }
+  ],
+  "usuarios": []
+}

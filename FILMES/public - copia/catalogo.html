@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Filmes - Matheus Gomes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .navbar-custom {
+            background-color: rgba(0, 0, 0, 0);
+            transition: background-color 0.3s;
+        }
+    
+        .navbar-custom.scrolled {
+            background-color: #000 !important;
+        }
+    
+        .navbar-brand-custom {
+            font-weight: bold;
+            font-size: 2.0rem;
+            color: #e50914 !important;
+        }
+    
+        .nav-link-custom {
+            color: #fff !important;
+            font-weight: 500;
+            font-size: 1.5rem;
+        }
+    
+        .hero {
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            position: relative;
+        }
+    
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%);
+        }
+    
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+    
+        .hero-title {
+            font-size: 5.0rem;
+            font-weight: bold;
+        }
+    
+        .btn-primary-custom {
+            background-color: #e50914;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            font-weight: bold;
+            font-size: 2.0rem;
+        }
+    
+        .section-title-custom {
+            font-size: 2.0rem;
+            font-weight: bold;
+            padding-left: 0.5rem;
+            border-left: 3px solid #e50914;
+        }
+    
+        .movie {
+            min-width: 50px;
+            transition: transform 0.3s;
+        }
+    
+        .movie:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+    
+        .movie img {
+            border-radius: 4.0px;
+        }
+    
+        .movie-info {
+            padding: 1.5rem;
+        }
+    
+        .movie-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.0rem;
+        }
+    
+        .movie-info p {
+            font-size: 1.5rem;
+            color: #46d369;
+            margin: 0;
+        }
+    
+        .carousel-control-custom {
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            font-size: 2.0rem;
+        }
+    
+        .footer-custom {
+            background-color: #141414;
+        }
+    
+        .footer-links-custom a {
+            color: #e9e3e3;
+            font-size: 1.0rem;
+        }
+    
+        .copyright-custom {
+            color: #e9e3e3;
+            font-size: 2.0rem;
+        }
+    
+        .modal-content {
+            background-color: #181818;
+            font-size: 1.6rem;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <header class="fixed-top navbar navbar-expand-lg py-3 navbar-custom" id="main-header">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand navbar-brand-custom" href="index.html">MATHEUS FLIX</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav d-flex">
+                    <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="index.html">Início</a></li>
+                    <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="catalogo.html#destaques">Destaques</a></li>
+                    <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="catalogo.html#series">Séries</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="catalogo.html#contato">Minha lista</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="hero vh-90 d-flex align-items-center" style="background-image: url('public2/images/senhordosaneis3.jpg')">
+        <div class="container px-4">
+            <div class="hero-content" style="max-width: 600px;">
+                <h2 class="hero-title mb-4">O Senhor dos Anéis: O Retorno do Rei</h2>
+                <p class="hero-description mb-4">A batalha final pela Terra Média começa. Junte-se à jornada épica que definirá o destino de todos.</p>
+                <div class="hero-buttons d-flex gap-3">
+                    <button class="btn btn-primary-custom" onclick="showMoreInfo(14)">
+                        <i class="bi bi-info-circle"></i> Mais Informações
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <main class="container-fluid px-4">
+        <section id="series" class="mb-5">
+            <h2 class="section-title-custom mb-4">O Senhor dos Anéis</h2>
+            <div class="position-relative">
+                <div class="movie-container-custom d-flex overflow-x-auto py-3 gap-3" id="lotrMovies">
+                </div>
+                <button class="carousel-control-custom carousel-prev position-absolute top-50 start-0 translate-middle-y border-0">‹</button>
+                <button class="carousel-control-custom carousel-next position-absolute top-50 end-0 translate-middle-y border-0">›</button>
+            </div>
+        </section>
+        
+        <section id="hobbit" class="mb-5">
+            <h2 class="section-title-custom mb-4">O Hobbit</h2>
+            <div class="position-relative">
+                <div class="movie-container-custom d-flex overflow-x-auto py-3 gap-3" id="hobbitMovies">
+                </div>
+                <button class="carousel-control-custom carousel-prev position-absolute top-50 start-0 translate-middle-y border-0">‹</button>
+                <button class="carousel-control-custom carousel-next position-absolute top-50 end-0 translate-middle-y border-0">›</button>
+            </div>
+        </section>
+        
+        <section id="harry-potter" class="mb-5">
+            <h2 class="section-title-custom mb-4">Harry Potter</h2>
+            <div class="position-relative">
+                <div class="movie-container-custom d-flex overflow-x-auto py-3 gap-3" id="hpMovies">
+                </div>
+                <button class="carousel-control-custom carousel-prev position-absolute top-50 start-0 translate-middle-y border-0">‹</button>
+                <button class="carousel-control-custom carousel-next position-absolute top-50 end-0 translate-middle-y border-0">›</button>
+            </div>
+        </section>
+        
+        <section id="animais-fantasticos" class="mb-5">
+            <h2 class="section-title-custom mb-4">Animais Fantásticos</h2>
+            <div class="position-relative">
+                <div class="movie-container-custom d-flex overflow-x-auto py-3 gap-3" id="afMovies">
+                </div>
+                <button class="carousel-control-custom carousel-prev position-absolute top-50 start-0 translate-middle-y border-0">‹</button>
+                <button class="carousel-control-custom carousel-next position-absolute top-50 end-0 translate-middle-y border-0">›</button>
+            </div>
+        </section>
+        
+        <section id="destaques" class="mb-5">
+            <h2 class="section-title-custom mb-4">Em Destaque</h2>
+            <div class="position-relative">
+                <div class="movie-container-custom d-flex overflow-x-auto py-3 gap-3" id="featuredMovies">
+                </div>
+                <button class="carousel-control-custom carousel-prev position-absolute top-50 start-0 translate-middle-y border-0">‹</button>
+                <button class="carousel-control-custom carousel-next position-absolute top-50 end-0 translate-middle-y border-0">›</button>
+            </div>
+        </section>
+        
+        <div class="modal fade" id="movieModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content bg-dark text-white">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title" id="movieModalTitle"></h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="" class="img-fluid rounded" id="movieModalImage" alt="">
+                            </div>
+                            <div class="col-md-6">
+                                <p id="movieModalDescription"></p>
+                                <div class="d-flex gap-2 mb-3">
+                                    <span class="badge bg-primary" id="movieModalYear"></span>
+                                    <span class="badge bg-secondary" id="movieModalDuration"></span>
+                                    <span class="badge bg-success" id="movieModalRating"></span>
+                                </div>
+                                <div id="movieModalGenres" class="mb-3"></div>
+                                <button class="btn btn-primary w-100" id="movieModalMoreInfoBtn">Mais Informações</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer id="contato" class="footer-custom py-5">
+        <div class="container">
+            <div class="footer-links-custom row g-4 mb-4">
+                <div class="col-6 col-md-3"><a href="#" class="d-block text-decoration-none">Idioma e legendas</a></div>
+                <div class="col-6 col-md-3"><a href="#" class="d-block text-decoration-none">Termos de uso</a></div>
+                <div class="col-6 col-md-3"><a href="#" class="d-block text-decoration-none">Privacidade</a></div>
+                <div class="col-6 col-md-3"><a href="#" class="d-block text-decoration-none">Preferências de cookies</a></div>
+                <div class="col-6 col-md-3"><a href="#" class="d-block text-decoration-none">Informações corporativas</a></div>
+                <div class="col-6 col-md-3"><a href="mailto:matheusrmme2019@gmail.com" class="d-block text-decoration-none">Entre em contato</a></div>
+            </div>
+            <p class="copyright-custom mb-0">© 2025 Catálogo de Filmes. Matheus Meirelles Gomes. Autorizado.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="public2/js/movies.js"></script>
+    
+    <script>
+        const movieModal = new bootstrap.Modal(document.getElementById('movieModal'));
+
+        function loadMovies(sectionId, filterFn) {
+            const section = document.getElementById(sectionId);
+            if (!section) return;
+
+            const filteredMovies = moviesData.movies.filter(filterFn);
+
+            section.innerHTML = filteredMovies.map(movie => `
+                <div class="movie">
+                    <img src="${movie.img}" class="w-100" alt="${movie.title}" 
+                         onclick="showMovieInfo(${movie.id})">
+                    <div class="movie-info">
+                        <h3>${movie.title.split(':')[1] ? movie.title.split(':')[1].trim() : movie.title}</h3>
+                        <p>${movie.rating} relevante</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showMovieInfo(movieId) {
+            const movie = moviesData.movies.find(m => m.id === movieId);
+            if (!movie) return;
+
+            document.getElementById('movieModalTitle').textContent = movie.title;
+            document.getElementById('movieModalImage').src = movie.img;
+            document.getElementById('movieModalImage').alt = movie.title;
+            document.getElementById('movieModalDescription').textContent = movie.description;
+            document.getElementById('movieModalYear').textContent = movie.year;
+            document.getElementById('movieModalDuration').textContent = movie.duration;
+            document.getElementById('movieModalRating').textContent = `${movie.rating} relevante`;
+
+            const genresContainer = document.getElementById('movieModalGenres');
+            genresContainer.innerHTML = movie.genres.map(g => 
+                `<span class="badge bg-info text-dark me-1">${g}</span>`
+            ).join('');
+
+            const moreInfoBtn = document.getElementById('movieModalMoreInfoBtn');
+            moreInfoBtn.onclick = () => showMoreInfo(movieId);
+
+            movieModal.show();
+        }
+
+        function showMoreInfo(movieId) {
+            const movie = moviesData.movies.find(m => m.id === movieId);
+            if (!movie) return;
+
+            if ([15, 16, 17].includes(movie.id)) {
+                alert('Página em construção. Este filme estará disponível em breve!');
+                return;
+            }
+
+            window.location.href = `detalhes.html?id=${movieId}`;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadMovies('lotrMovies', movie => [12, 13, 14].includes(movie.id));
+            loadMovies('hobbitMovies', movie => [15, 16, 17].includes(movie.id));
+            loadMovies('hpMovies', movie => [4, 5, 6, 7, 8, 9, 10, 11].includes(movie.id));
+            loadMovies('afMovies', movie => [1, 2, 3].includes(movie.id));
+            loadMovies('featuredMovies', movie => [14, 11, 17].includes(movie.id));
+
+            document.querySelectorAll('.carousel-prev').forEach(button => {
+                button.addEventListener('click', () => {
+                    const container = button.nextElementSibling;
+                    container.scrollBy({ left: -300, behavior: 'smooth' });
+                });
+            });
+
+            document.querySelectorAll('.carousel-next').forEach(button => {
+                button.addEventListener('click', () => {
+                    const container = button.previousElementSibling;
+                    container.scrollBy({ left: 300, behavior: 'smooth' });
+                });
+            });
+        });
+
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>

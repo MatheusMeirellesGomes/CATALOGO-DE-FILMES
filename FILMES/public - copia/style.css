@@ -1,0 +1,634 @@
+/* Estilo para o título principal do cabeçalho
+   - Função: Define o estilo do título principal no cabeçalho (ex.: logo ou nome do site)
+   - Font-size: 2.5rem (equivalente a ~40px em fontes padrão)
+   - Fonte: Netflix Sans, peso 900 (extra negrito)
+   - Ajuste manual: Modifique o valor de font-size para aumentar (ex.: 3rem) ou diminuir (ex.: 2rem)
+*/
+.header-title {
+  color: var(--primary);
+  font-size: 7.0rem; /* Ajuste aqui */
+  font-weight: 900;
+  margin-right: 40px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Variáveis Globais
+   - Define cores usadas em todo o site
+   - Não afeta fontes diretamente, mas é referenciado em outros estilos
+*/
+:root {
+  --primary: #e50914;
+  --primary-dark: #b2070f;
+  --black: #141414;
+  --dark-gray: #222;
+  --medium-gray: #2d2d2d;
+  --light-gray: #e5e5e5;
+  --white: #fff;
+  --transition: all 0.3s ease;
+}
+
+/* Estilos Base
+   - Define a fonte global e estilos gerais do body
+   - Font-family: Netflix Sans (com fallbacks para Helvetica Neue, Helvetica, Arial, sans-serif)
+   - Ajuste manual: Para mudar a fonte global, modifique font-family aqui
+*/
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Ajuste a fonte aqui */
+  line-height: 1.4;
+  overflow-x: hidden;
+}
+
+/* Fontes Customizadas Netflix
+   - Define a fonte Netflix Sans em diferentes pesos
+   - Pesos disponíveis: 100 (Thin), 300 (Light), 400 (Regular), 700 (Medium), 800 (Bold), 900 (Black)
+   - Ajuste manual: Para usar outra fonte, substitua as URLs ou aponte para outra @font-face
+*/
+@font-face {
+  font-family: 'Netflix Sans';
+  font-weight: 100;
+  src: url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Th.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Netflix Sans';
+  font-weight: 300;
+  src: url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Lt.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Netflix Sans';
+  font-weight: 400;
+  src: url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Netflix Sans';
+  font-weight: 700;
+  src: url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Md.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Netflix Sans';
+  font-weight: 800;
+  src: url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Bd.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Netflix Sans';
+  font-weight: 900;
+  src: url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff2') format('woff2');
+}
+
+/* Header
+   - Estiliza o cabeçalho fixo no topo da página
+   - Não define font-size diretamente, mas contém elementos com fontes (h1, nav)
+*/
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 4%;
+  z-index: 1000;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+  transition: var(--transition);
+}
+
+/* Estilo do cabeçalho quando rola a página */
+header.scrolled {
+  background-color: var(--black);
+}
+
+/* Título no cabeçalho (h1)
+   - Função: Título principal no cabeçalho, possivelmente duplicando .header-title
+   - Font-size: 2.5rem (equivalente a ~40px)
+   - Fonte: Netflix Sans, peso 900 (extra negrito)
+   - Ajuste manual: Modifique font-size para aumentar (ex.: 3rem) ou diminuir (ex.: 2rem)
+*/
+header h1 {
+  color: var(--primary);
+  font-size: 2.5rem; /* Ajuste aqui */
+  font-weight: 900;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 40px;
+}
+
+/* Navegação
+   - Contém os links do menu no cabeçalho
+*/
+nav {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav li {
+  margin-right: 20px;
+}
+
+/* Links de navegação
+   - Função: Estiliza os links do menu no cabeçalho
+   - Font-size: 1rem (equivalente a ~16px)
+   - Fonte: Netflix Sans, peso 500 (médio)
+   - Ajuste manual: Modifique font-size para aumentar (ex.: 1.2rem) ou diminuir (ex.: 0.9rem)
+*/
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1rem; /* Ajuste aqui */
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+nav a:hover {
+  color: var(--light-gray);
+}
+
+/* Hero Section
+   - Estiliza a seção principal (hero) com imagem de fundo
+   - Contém elementos com fontes (h2, p, botões)
+*/
+.hero {
+  position: relative;
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 0 4%;
+  margin-bottom: 50px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+}
+
+/* Título principal da seção hero (h2)
+   - Função: Título destacado na seção hero
+   - Font-size: 3.5rem (equivalente a ~56px)
+   - Fonte: Netflix Sans, peso 900 (extra negrito)
+   - Ajuste manual: Modifique font-size para aumentar (ex.: 4rem) ou diminuir (ex.: 3rem)
+*/
+.hero h2 {
+  font-size: 3.5rem; /* Ajuste aqui */
+  font-weight: 900;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Parágrafo da seção hero
+   - Função: Texto descritivo na seção hero
+   - Font-size: 1.2rem (equivalente a ~19.2px)
+   - Fonte: Netflix Sans, peso padrão (provavelmente 400, regular)
+   - Ajuste manual: Modifique font-size para aumentar (ex.: 1.4rem) ou diminuir (ex.: 1rem)
+*/
+.hero p {
+  font-size: 1.2rem; /* Ajuste aqui */
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+/* Botões (geral)
+   - Função: Estiliza botões na seção hero (primário e secundário)
+   - Font-size: 1.1rem (equivalente a ~17.6px)
+   - Fonte: Netflix Sans, peso 600 (médio-negrito)
+   - Ajuste manual: Modifique font-size para aumentar (ex.: 1.3rem) ou diminuir (ex.: 1rem)
+*/
+.btn {
+  padding: 10px 25px;
+  border-radius: 4px;
+  font-size: 1.1rem; /* Ajuste aqui */
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-primary {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.btn-primary:hover {
+  background-color: rgba(255,255,255,0.8);
+}
+
+.btn-secondary {
+  background-color: rgba(109, 109, 110, 0.7);
+  color: var(--white);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(109, 109, 110, 0.5);
+}
+
+/* Títulos das seções de catálogo
+   - Função: Títulos das seções de filmes/séries (ex.: "Populares")
+   - Font-size: 1.8rem (equivalente a ~28.8px)
+   - Fonte: Netflix Sans, peso 600 (médio-negrito)
+   - Ajuste manual: Modifique font-size para aumentar (ex.: 2rem) ou diminuir (ex.: 1.5rem)
+*/
+.section-title {
+  font-size: 1.8rem; /* Ajuste aqui */
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 20px;
+  padding-left: 15px;
+}
+
+.movie-row {
+  position: relative;
+}
+
+.movie-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 0;
+  gap: 15px;
+  scrollbar-width: none;
+}
+
+.movie-container::-webkit-scrollbar {
+  display: none;
+}
+
+.movie {
+  flex: 0 0 auto;
+  width: 280px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.movie:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.movie img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  transition: var(--transition);
+}
+
+.movie:hover img {
+  border-radius: 0;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.movie-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+  padding: 25px 15px 15px;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.movie:hover .movie-info {
+  opacity: 1;
+}
+
+/* Título dos filmes no catálogo
+   - Função: Título de cada filme/série no carrossel
+   - Font-size: 1.2rem (equivalente a ~19.2px)
+   - Fonte: Netflix Sans, peso padrão (provavelmente 400, regular)
+   - Ajuste manual: Modifique font-size para aumentar (ex.: 1.4rem) ou diminuir (ex.: 1rem)
+*/
+.movie h3 {
+  font-size: 1.2rem; /* Ajuste aqui */
+  margin-bottom: 8px;
+}
+
+/* Descrição dos filmes no catálogo
+   - Função: Texto descritivo de cada filme/série no carrossel
+   - Font-size: 0.9rem (equivalente a ~14.4px)
+   - Fonte: Netflix Sans, peso padrão (provavelmente 400, regular)
+   - Ajuste manual: Modifique font-size para aumentar (ex.: 1rem) ou diminuir (ex.: 0.8rem)
+*/
+.movie p {
+  font-size: 0.9rem; /* Ajuste aqui */
+  color: var(--light-gray);
+}
+
+/* Controles do carrossel
+   - Função: Botões de navegação (esquerda/direita) no carrossel
+   - Font-size: 1.5rem (equivalente a ~24px)
+   - Fonte: Netflix Sans, peso padrão (provavelmente 400, regular)
+   - Ajuste manual: Modifique font-size para aumentar (ex.: 1.8rem) ou diminuir (ex.: 1.2rem)
+*/
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 70%;
+  background-color: rgba(0,0,0,0.5);
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem; /* Ajuste aqui */
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.movie-row:hover .carousel-control {
+  opacity: 1;
+}
+
+.carousel-prev {
+  left: 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.carousel-next {
+  right: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+/* Rodapé
+   - Estiliza a seção de rodapé
+   - Contém elementos com fontes (social-links, footer-links, copyright)
+*/
+footer {
+  background-color: var(--dark-gray);
+  padding: 50px 4% 30px;
+  color: var(--light-gray);
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Links de redes sociais no rodapé
+   - Função: Ícones/links de redes sociais
+   - Font-size: 1.5rem (equivalente a ~24px)
+   - Fonte: Netflix Sans, peso padrão (provavelmente 400, regular)
+   - Ajuste manual: Modifique font-size para aumentar (ex.: 1.8rem) ou diminuir (ex.: 1.2rem)
+*/
+.social-links {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.social-links a {
+  color: var(--light-gray);
+  font-size: 1.5rem; /* Ajuste aqui */
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  color: var(--white);
+}
+
+/* Links no rodapé
+   - Função: Links de navegação no rodapé (ex.: Termos, Privacidade)
+   - Font-size: 0.9rem (equivalente a ~14.4px)
+   - Fonte: Netflix Sans, peso padrão (provavelmente 400, regular)
+   - Ajuste manual: Modifique font-size para aumentar (ex.: 1rem) ou diminuir (ex.: 0.8rem)
+*/
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.footer-links a {
+  color: var(--light-gray);
+  text-decoration: none;
+  font-size: 0.9rem; /* Ajuste aqui */
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Texto de copyright no rodapé
+   - Função: Texto de direitos autorais
+   - Font-size: 0.8rem (equivalente a ~12.8px)
+   - Fonte: Netflix Sans, peso padrão (provavelmente 400, regular)
+   - Ajuste manual: Modifique font-size para aumentar (ex.: 0.9rem) ou diminuir (ex.: 0.7rem)
+*/
+.copyright {
+  font-size: 0.8rem; /* Ajuste aqui */
+  color: var(--medium-gray);
+}
+
+/* Responsividade
+   - Ajustes para diferentes tamanhos de tela
+   - Inclui mudanças em font-size para manter proporções
+*/
+/* RESPONSIVIDADE */
+/* Estilos para tablets e telas médias (até 1024px) */
+@media (max-width: 1024px) {
+  /* Hero Section: Reduz o tamanho do título para melhor encaixe */
+  .hero h2 {
+    font-size: 2.5rem; /* Reduzido de 3.5rem para melhor proporção */
+  }
+
+  /* Hero Section: Reduz o tamanho do parágrafo */
+  .hero p {
+    font-size: 1rem; /* Reduzido de 1.2rem */
+  }
+
+  /* Botões: Ajuste de tamanho para telas menores */
+  .btn {
+    font-size: 1rem; /* Reduzido de 1.1rem */
+    padding: 8px 20px; /* Menor padding */
+  }
+
+  /* Título de seção (ex.: "Populares") */
+  .section-title {
+    font-size: 1.6rem; /* Reduzido de 1.8rem */
+  }
+
+  /* Título dos filmes */
+  .movie h3 {
+    font-size: 1.1rem; /* Leve ajuste */
+  }
+
+  /* Descrição dos filmes */
+  .movie p {
+    font-size: 0.85rem;
+  }
+
+  /* Largura dos cards dos filmes */
+  .movie {
+    width: 240px; /* Reduzido de 280px */
+  }
+
+  .movie img {
+    height: 360px; /* Reduzido proporcionalmente */
+  }
+
+  /* Título principal do header */
+  .header-title,
+  header h1 {
+    font-size: 5rem; /* Reduzido de 7rem/2.5rem para equilíbrio */
+  }
+
+  /* Menu de navegação */
+  nav a {
+    font-size: 0.95rem;
+  }
+}
+
+/* Estilos para celulares (até 768px) */
+@media (max-width: 768px) {
+  /* Hero Section */
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    font-size: 0.95rem;
+    padding: 6px 16px;
+  }
+
+  .movie {
+    width: 200px;
+  }
+
+  .movie img {
+    height: 300px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .movie h3 {
+    font-size: 1rem;
+  }
+
+  .movie p {
+    font-size: 0.8rem;
+  }
+
+  .header-title,
+  header h1 {
+    font-size: 3.5rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+}
+
+/* Estilos para telas muito pequenas (até 480px) */
+@media (max-width: 480px) {
+  .hero {
+    height: 80vh; /* Ajuste de altura */
+    padding: 0 5%;
+  }
+
+  .hero h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 5px 12px;
+  }
+
+  .movie {
+    width: 160px;
+  }
+
+  .movie img {
+    height: 240px;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .movie h3 {
+    font-size: 0.9rem;
+  }
+
+  .movie p {
+    font-size: 0.75rem;
+  }
+
+  .header-title,
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  nav li {
+    margin-right: 0;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr); /* De 4 colunas para 2 */
+  }
+
+  .social-links a {
+    font-size: 1.2rem;
+  }
+
+  .copyright {
+    font-size: 0.75rem;
+  }
+}

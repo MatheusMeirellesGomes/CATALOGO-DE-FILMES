@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Filme - Matheus Flix</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .navbar-brand-custom {
+           color: #f80b0b; /* Cor branca */
+           font-size: 3rem; /* Tamanho personalizado */
+        }
+        /* Estiliza a seção principal que contém os detalhes do filme */
+        .movie-details {
+            padding: 2rem 0; /* Adiciona preenchimento interno (padding) de 2rem (32px) na parte superior e inferior, e 0 nas laterais, para dar espaço ao conteúdo */
+            margin-top: 80px; /* Adiciona uma margem superior de 80px para evitar que o conteúdo fique escondido sob o header fixo (navbar) */
+            background-color: #080101; /* Define um fundo cinza escuro (#070101) para destacar o conteúdo da página */
+        }
+
+        /* Estiliza a imagem do filme (pôster) dentro da seção .movie-details */
+        .movie-details img {
+            max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner pai, ajustando-se automaticamente */
+            border-radius: 12px; /* Arredonda os cantos da imagem com um raio de 12px para um visual mais suave */
+            box-shadow: 0 8px 16px rgba(255, 0, 0, 0.5); /* Adiciona uma sombra à imagem: 0 deslocamento horizontal, 8px deslocamento vertical, 16px de desfoque, com cor vermelha e opacidade 0.5 */
+            transition: transform 0.3s; /* Adiciona uma transição suave de 0.3 segundos para o efeito de transformação (usado no hover) */
+        }
+
+        /* Adiciona um efeito de hover na imagem */
+        .movie-details img:hover {
+            transform: scale(1.05); /* Aumenta a imagem em 5% (escala 1.05) quando o mouse passa por cima, criando um efeito de zoom suave */
+        }
+
+        /* Estiliza o título principal (h1) do filme dentro da seção .movie-details */
+        .movie-details h1 {
+            font-size: 4.0rem; /* Define o tamanho da fonte do título como 4.0rem (64px), tornando-o grande e destacado */
+            font-weight: 700; /* Define a espessura da fonte como 700 (negrito mais forte que o 'bold') para maior ênfase */
+            color: #e50914; /* Define a cor do título como vermelho (#e50914), seguindo a paleta da marca */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adiciona uma sombra ao texto: 2px deslocamento horizontal, 2px vertical, 4px de desfoque, com cor preta e opacidade 0.7 */
+            margin-bottom: 2rem; /* Adiciona uma margem inferior de 2rem (32px) para separar o título do conteúdo abaixo */
+        }
+
+        /* Estiliza os subtítulos (h3) das seções (como "Sinopse", "Trailer", "Curiosidades") */
+        .movie-details h3 {
+            font-size: 4.0rem; /* Define o tamanho da fonte como 4.0rem (64px), menor que o h1, mas ainda destacado */
+            font-weight: 600; /* Define a espessura da fonte como 600 (um pouco menos negrito que o h1) */
+            margin-top: 2.5rem; /* Adiciona uma margem superior de 2.5rem (40px) para separar a seção do conteúdo acima */
+            margin-bottom: 1rem; /* Adiciona uma margem inferior de 1rem (16px) para separar do conteúdo abaixo */
+            border-bottom: 3px solid #e50914; /* Adiciona uma borda inferior de 3px, sólida, na cor vermelha (#e50914) para destacar o título da seção */
+            padding-bottom: 0.5rem; /* Adiciona um preenchimento inferior de 0.5rem (8px) para ajustar o espaço entre o texto e a borda inferior */
+            color: #ffffff; /* Define a cor do texto como branco puro (#ffffff) para contraste com o fundo escuro */
+        }
+
+        /* Estiliza os parágrafos (p) dentro da seção .movie-details, como descrição, sinopse, elenco, etc. */
+        .movie-details p {
+            font-size: 2.0rem; /* Define o tamanho da fonte como 2.0rem (32px), maior que o padrão para melhor legibilidade */
+            line-height: 1.6; /* Define o espaçamento entre linhas como 1.6 vezes o tamanho da fonte, melhorando a leitura */
+            color: #e0e0e0; /* Define a cor do texto como cinza claro (#e0e0e0) para contraste suave com o fundo escuro */
+            margin-bottom: 1rem; /* Adiciona uma margem inferior de 1rem (16px) para separar os parágrafos entre si */
+        }
+
+        /* Estiliza o contêiner dos badges (ano, duração, avaliação) */
+        .movie-details .badges {
+            margin-bottom: 1.5rem; /* Adiciona uma margem inferior de 1.5rem (24px) para separar os badges do conteúdo abaixo */
+        }
+
+        /* Estiliza os badges individualmente (ano, duração, avaliação) */
+        .movie-details .badges .badge {
+            font-size: 1.5rem; /* Define o tamanho da fonte dos badges como 1.5rem (24px) para maior destaque */
+            padding: 0.5rem 1rem; /* Adiciona preenchimento interno: 0.5rem (8px) vertical, 1rem (16px) horizontal, para um visual equilibrado */
+            background-color: #46d369; /* Define o fundo dos badges como verde (#46d369), uma cor vibrante */
+            color: #000000; /* Define a cor do texto como preto (#000000) para contraste com o fundo verde */
+        }
+
+        /* Estiliza os badges de gêneros (ex.: "Fantasia", "Aventura") */
+        .movie-details #movieGenres .badge {
+            background-color: #1e90ff; /* Define o fundo dos badges de gêneros como azul (#1e90ff) para diferenciá-los dos outros badges */
+            margin-right: 0.5rem; /* Adiciona uma margem à direita de 0.5rem (8px) para separar os badges de gêneros entre si */
+            font-size: 1.5rem; /* Define o tamanho da fonte dos badges de gêneros como 1.5rem (24px) */
+        }
+
+        /* Estiliza o contêiner do trailer (onde o iframe do YouTube é inserido) */
+        .movie-details .trailer-container {
+            position: relative; /* Define a posição como relativa para que o iframe dentro dele possa ser posicionado absolutamente em relação a este contêiner */
+            padding-bottom: 56.25%; /* Define a proporção 16:9 para o trailer (56.25% = 9/16, usada para manter a proporção do vídeo) */
+            height: 0; /* Define a altura como 0, já que o padding-bottom cria o espaço necessário para o vídeo */
+            overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse os limites do contêiner */
+            border: 2px solid #e50914; /* Adiciona uma borda de 2px, sólida, na cor vermelha (#e50914) para destacar o trailer */
+            border-radius: 8px; /* Arredonda os cantos do contêiner com um raio de 8px para um visual mais suave */
+        }
+
+        /* Estiliza o iframe dentro do contêiner do trailer */
+        .movie-details .trailer-container iframe {
+            position: absolute; /* Posiciona o iframe de forma absoluta dentro do contêiner .trailer-container */
+            top: 0; /* Alinha o topo do iframe ao topo do contêiner */
+            left: 0; /* Alinha a esquerda do iframe à esquerda do contêiner */
+            width: 100%; /* Faz o iframe ocupar 100% da largura do contêiner */
+            height: 100%; /* Faz o iframe ocupar 100% da altura do contêiner (definida pelo padding-bottom) */
+            border: none; /* Remove qualquer borda padrão do iframe para um visual limpo */
+        }
+
+        /* Estiliza a seção de curiosidades */
+        .movie-details .curiosities {
+            background-color: #1a1a1a; /* Define um fundo cinza escuro (#1a1a1a) para destacar a seção de curiosidades */
+            padding: 1.5rem; /* Adiciona um preenchimento interno de 1.5rem (24px) em todos os lados para dar espaço ao texto */
+            border-radius: 10px; /* Arredonda os cantos da seção com um raio de 10px para um visual mais suave */
+            border-left: 5px solid #e50914; /* Adiciona uma borda à esquerda de 5px, sólida, na cor vermelha (#e50914) para destaque visual */
+        }
+
+        /* Estiliza o parágrafo dentro da seção de curiosidades */
+        .movie-details .curiosities p {
+            font-style: italic; /* Define o estilo da fonte como itálico para dar um toque especial às curiosidades */
+            color: #d3d3d3; /* Define a cor do texto como cinza claro (#d3d3d3) para contraste com o fundo escuro */
+        }
+
+        /* Media query para ajustar os estilos em telas menores (largura máxima de 768px, como em tablets ou celulares) */
+        @media (max-width: 768px) {
+            /* Ajusta o título (h1) para telas menores */
+            .movie-details h1 {
+                font-size: 2.2rem; /* Reduz o tamanho do título para 2.2rem (35.2px) em telas menores para melhor legibilidade */
+            }
+
+            /* Ajusta os subtítulos (h3) para telas menores */
+            .movie-details h3 {
+                font-size: 1.6rem; /* Reduz o tamanho dos subtítulos para 1.6rem (25.6px) em telas menores */
+            }
+
+            /* Ajusta os parágrafos (p) para telas menores */
+            .movie-details p {
+                font-size: 1.1rem; /* Reduz o tamanho dos parágrafos para 1.1rem (17.6px) em telas menores */
+            }
+
+            /* Ajusta os badges para telas menores */
+            .movie-details .badges .badge {
+                font-size: 1rem; /* Reduz o tamanho da fonte dos badges para 1rem (16px) em telas menores */
+                padding: 0.4rem 0.8rem; /* Reduz o preenchimento interno: 0.4rem (6.4px) vertical, 0.8rem (12.8px) horizontal, para badges menores */
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Header -->
+    <header class="fixed-top navbar navbar-expand-lg py-3 navbar-custom" id="main-header">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand navbar-brand-custom" href="index.html">MATHEUS FLIX</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav d-flex">
+                    <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="index.html">Início</a></li>
+                    <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="catalogo.html#destaques">Destaques</a></li>
+                    <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="catalogo.html#series">Séries</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="catalogo.html#contato">Minha lista</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container-fluid px-4 movie-details">
+        <div class="row">
+            <div class="col-md-4">
+                <img id="movieImage" src="" alt="" class="img-fluid">
+            </div>
+            <div class="col-md-8">
+                <h1 id="movieTitle"></h1>
+                <div class="badges d-flex gap-2 mb-3">
+                    <span class="badge bg-primary" id="movieYear"></span>
+                    <span class="badge bg-secondary" id="movieDuration"></span>
+                    <span class="badge bg-success" id="movieRating"></span>
+                </div>
+                <div id="movieGenres" class="mb-3"></div>
+                <p><strong>Descrição:</strong> <span id="movieDescription"></span></p>
+                <p><strong>Elenco:</strong> <span id="movieCast"></span></p>
+                <p><strong>Diretor:</strong> <span id="movieDirector"></span></p>
+            </div>
+        </div>
+        <!-- Seção de Sinopse -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h3>Sinopse</h3>
+                <p id="movieSynopsis"></p>
+            </div>
+        </div>
+        <!-- Seção de Trailer -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h3>Trailer</h3>
+                <div class="trailer-container" id="movieTrailer"></div>
+            </div>
+        </div>
+        <!-- Seção de Curiosidades -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h3>Curiosidades</h3>
+                <div class="curiosities">
+                    <p id="movieCuriosities"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer - Opção 1: Informações editáveis manualmente -->
+    <footer id="contato" class="footer-custom py-5">
+        <div class="container">
+            <div class="footer-links-custom row g-4 mb-4">
+                <div class="col-6 col-md-3"><a href="#" class="d-block text-decoration-none">Editar este link 1</a></div>
+                <div class="col-6 col-md-3"><a href="#" class="d-block text-decoration-none">Editar este link 2</a></div>
+                <div class="col-6 col-md-3"><a href="#" class="d-block text-decoration-none">Editar este link 3</a></div>
+                <div class="col-6 col-md-3"><a href="#" class="d-block text-decoration-none">Editar este link 4</a></div>
+                <div class="col-6 col-md-3"><a href="#" class="d-block text-decoration-none">Editar este link 5</a></div>
+                <div class="col-6 col-md-3"><a href="#" class="d-block text-decoration-none">Editar este link 6</a></div>
+            </div>
+            <p class="copyright-custom mb-0">© 2025 Editar este texto de copyright. Editar nome do autor.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Dados dos filmes -->
+    <script src="public2/js/movies.js"></script>
+    <script>
+        // Função para obter o ID do filme da URL
+        function getMovieIdFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            return parseInt(params.get('id'));
+        }
+
+        // Função para carregar os detalhes do filme
+        function loadMovieDetails() {
+            const movieId = getMovieIdFromUrl();
+            const movie = moviesData.movies.find(m => m.id === movieId);
+
+            if (!movie) {
+                document.querySelector('.movie-details').innerHTML = '<p>Filme não encontrado.</p>';
+                return;
+            }
+
+            document.getElementById('movieTitle').textContent = movie.title;
+            document.getElementById('movieImage').src = movie.img;
+            document.getElementById('movieImage').alt = movie.title;
+            document.getElementById('movieDescription').textContent = movie.description;
+            document.getElementById('movieSynopsis').textContent = movie.synopsis || 'Sinopse não disponível.';
+            document.getElementById('movieYear').textContent = movie.year;
+            document.getElementById('movieDuration').textContent = movie.duration;
+            document.getElementById('movieRating').textContent = `${movie.rating} relevante`;
+            document.getElementById('movieGenres').innerHTML = movie.genres.map(g => 
+                `<span class="badge bg-info text-dark me-1">${g}</span>`
+            ).join('');
+            document.getElementById('movieCast').textContent = movie.cast || 'Não disponível';
+            document.getElementById('movieDirector').textContent = movie.director || 'Não disponível';
+            document.getElementById('movieTrailer').innerHTML = movie.trailer ? 
+                `<iframe src="${movie.trailer}" frameborder="0" allowfullscreen></iframe>` : 
+                '<p>Trailer não disponível.</p>';
+            document.getElementById('movieCuriosities').textContent = movie.curiosities || 'Nenhuma curiosidade disponível.';
+        }
+
+        // Efeito de scroll no header
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Carrega os detalhes quando a página é carregada
+        window.addEventListener('DOMContentLoaded', loadMovieDetails);
+    </script>
+</body>
+</html>
