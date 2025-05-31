@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matheus Flix - Estatísticas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --primary: #e50914;
+            --primary-dark: #b2070f;
+            --black: #141414;
+            --dark-gray: #222;
+            --medium-gray: #2d2d2d;
+            --light-gray: #e5e5e5;
+            --white: #fff;
+            --transition: all 0.3s ease;
+        }
+
+        @font-face {
+            font-family: 'Netflix Sans';
+            font-weight: 100;
+            src: url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Th.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Netflix Sans';
+            font-weight: 300;
+            src: url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Lt.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Netflix Sans';
+            font-weight: 400;
+            src: url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Netflix Sans';
+            font-weight: 700;
+            src: url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Md.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Netflix Sans';
+            font-weight: 800;
+            src: url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Bd.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Netflix Sans';
+            font-weight: 900;
+            src: url('https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff2') format('woff2');
+        }
+
+        body {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 1)), url('public2/images/senhordosaneis3.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: var(--white);
+            margin: 0;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 4%;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background-color: var(--black);
+        }
+
+        header h1.header-title {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 40px;
+        }
+
+        nav {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            margin-right: 25px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--light-gray);
+        }
+
+        nav a.active {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .visualizacao-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .visualizacao-section .section-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            margin-bottom: 2.5rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .visualizacao-section canvas#generosChart {
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            max-width: 600px;
+            width: 90%;
+            margin: auto;
+        }
+
+        footer {
+            background-color: var(--dark-gray);
+            padding: 50px 4% 30px;
+            color: #e9e3e3;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            color: var(--light-gray);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: #e9e3e3;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #e9e3e3;
+            text-align: center!important;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            header h1.header-title {
+                font-size: 2.5rem;
+            }
+            nav a {
+                font-size: 1.1rem;
+            }
+            .visualizacao-section .section-title {
+                font-size: 2.8rem;
+            }
+            .visualizacao-section canvas#generosChart {
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1.header-title {
+                font-size: 2rem;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            nav li {
+                margin-right: 0;
+            }
+            nav a {
+                font-size: 1rem;
+            }
+            .visualizacao-section .section-title {
+                font-size: 2.2rem;
+            }
+            .visualizacao-section canvas#generosChart {
+                max-width: 400px;
+                padding: 0.8rem;
+            }
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1.header-title {
+                font-size: 1.8rem;
+            }
+            nav a {
+                font-size: 0.9rem;
+            }
+            .visualizacao-section .section-title {
+                font-size: 1.8rem;
+            }
+            .visualizacao-section canvas#generosChart {
+                max-width: 300px;
+                padding: 0.6rem;
+            }
+            .social-links a {
+                font-size: 1.2rem;
+            }
+            .copyright {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="header-title">MATHEUS FLIX</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="catalogo.html">Destaques</a></li>
+                <li><a href="catalogo.html#series">Séries</a></li>
+                <li><a href="catalogo.html#minha-lista">Minha Lista</a></li>
+                <li><a href="visualizacao.html" class="active">Estatísticas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="visualizacao-section">
+            <h2 class="section-title">Estatísticas do Catálogo</h2>
+            <canvas id="generosChart"></canvas>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+            </div>
+            <div class="footer-links">
+                <a href="#">Idioma e legendas</a>
+                <a href="#">Termos de uso</a>
+                <a href="#">Privacidade</a>
+                <a href="#">Preferências de cookies</a>
+                <a href="#">Informações corporativas</a>
+                <a href="#">Entre em contato</a>
+            </div>
+            <div class="copyright">
+                © 2025 Catálogo de Filmes. Matheus Meirelles Gomes. Autorizado.
+            </div>
+        </div>
+    </footer>
+    <script src="public2/js/movies.js"></script>
+    <script src="public2/js/visualizacao.js"></script>
+</body>
+</html>
