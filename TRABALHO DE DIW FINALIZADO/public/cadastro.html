@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Filmes - Matheus Flix</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- CSS Personalizado -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Estilo da Navbar */
+    .navbar-custom {
+      background-color: rgba(0, 0, 0, 0);
+      transition: background-color 0.3s;
+    }
+    .navbar-custom.scrolled {
+      background-color: #000 !important;
+    }
+    .navbar-brand-custom {
+      font-weight: bold;
+      font-size: 2.0rem;
+      color: #e50914 !important;
+    }
+    .nav-link-custom {
+      color: #fff !important;
+      font-weight: 500;
+      font-size: 1.5rem;
+    }
+
+    /* Estilo do Conteúdo Principal */
+    .main-content {
+      padding-top: 80px; /* Espaço para a navbar fixa */
+    }
+    .section-title-custom {
+      font-size: 2.5rem;
+      font-weight: bold;
+      padding-left: 0.5rem;
+      border-left: 3px solid #e50914;
+      color: #fff;
+      margin-bottom: 2rem;
+    }
+
+    /* Estilo do Formulário */
+    .form-container {
+      background-color: #181818;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    }
+    .form-label {
+      font-weight: bold;
+      color: #fff;
+      font-size: 1.2rem;
+    }
+    .form-control {
+      background-color: #333;
+      color: #fff;
+      border: 1px solid #555;
+    }
+    .form-control:focus {
+      background-color: #333;
+      color: #fff;
+      border-color: #e50914;
+      box-shadow: none;
+    }
+    .btn-primary-custom {
+      background-color: #e50914;
+      border: none;
+      padding: 0.75rem;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .btn-primary-custom:hover {
+      background-color: #f40612;
+    }
+
+    /* Estilo da Tabela */
+    .table-container {
+      background-color: #181818;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    }
+    .table {
+      color: #fff;
+    }
+    .table-dark {
+      background-color: #141414;
+    }
+    .table-hover tbody tr:hover {
+      background-color: #2a2a2a;
+    }
+    .btn-warning-custom {
+      background-color: #f1c40f;
+      border: none;
+      color: #000;
+    }
+    .btn-danger-custom {
+      background-color: #e50914;
+      border: none;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .section-title-custom {
+        font-size: 1.8rem;
+      }
+      .form-label {
+        font-size: 1rem;
+      }
+      .btn-primary-custom {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+  <!-- Navbar -->
+  <header class="fixed-top navbar navbar-expand-lg py-3 navbar-custom" id="main-header">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand navbar-brand-custom" href="index.html">MATHEUS FLIX</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <nav class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto d-flex align-items-center">
+          <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="index.html">Início</a></li>
+          <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="catalogo.html#destaques">Destaques</a></li>
+          <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="catalogo.html#series">Séries</a></li>
+          <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="catalogo.html#contato">Minha Lista</a></li>
+          <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="visualizacao.html">Estatísticas</a></li>
+          <li class="nav-item me-4"><a class="nav-link nav-link-custom active" href="cadastro_filmes.html">Cadastrar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container-fluid px-4 main-content">
+    <h1 class="section-title-custom">Cadastro de Filmes</h1>
+    <div class="row">
+      <!-- Formulário de Cadastro -->
+      <div class="col-md-4 mb-4">
+        <div class="form-container">
+          <h5 class="mb-3 text-white">Novo Filme</h5>
+          <form id="filmForm">
+            <input type="hidden" id="filmId">
+            <div class="mb-3">
+              <label for="title" class="form-label">Título do Filme</label>
+              <input type="text" class="form-control" id="title" required>
+            </div>
+            <div class="mb-3">
+              <label for="year" class="form-label">Ano de Lançamento</label>
+              <input type="number" class="form-control" id="year" required>
+            </div>
+            <div class="mb-3">
+              <label for="genres" class="form-label">Gêneros (separados por vírgula)</label>
+              <input type="text" class="form-control" id="genres" required>
+            </div>
+            <div class="mb-3">
+              <label for="rating" class="form-label">Avaliação (0 a 10)</label>
+              <input type="number" class="form-control" id="rating" step="0.1" min="0" max="10" required>
+            </div>
+            <div class="mb-3">
+              <label for="img" class="form-label">URL da Imagem</label>
+              <input type="url" class="form-control" id="img">
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Descrição</label>
+              <textarea class="form-control" id="description" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary-custom w-100" id="submitBtn">Cadastrar</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tabela de Filmes -->
+      <div class="col-md-8">
+        <div class="table-container">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle">
+              <thead class="table-dark">
+                <tr>
+                  <th>ID</th>
+                  <th>Título</th>
+                  <th>Ano</th>
+                  <th>Gêneros</th>
+                  <th>Avaliação</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="filmsTable">
+                <!-- Linhas populadas pelo cadastro.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light py-4 mt-5">
+    <div class="container text-center">
+      <p class="mb-0">© 2025 Projeto Filmes. Todos os direitos reservados. Matheus Meirelles Gomes</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="cadastro.js"></script>
+  <script>
+    // Efeito de scroll na navbar
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('main-header');
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+</body>
+</html>
