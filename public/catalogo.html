@@ -202,6 +202,7 @@
                     <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="catalogo.html#contato">Minha lista</a></li>
                     <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="visualizacao.html">Estatísticas</a></li>
                     <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="cadastro.html">Cadastrar</a></li>
+                    <li class="nav-item me-4"><a class="nav-link nav-link-custom" href="favoritos.html">Favoritos</a></li>
                 </ul>
             </nav>
         </div>
@@ -325,18 +326,26 @@
             const section = document.getElementById(sectionId);
             if (!section) return;
 
+            const favoriteIds = JSON.parse(localStorage.getItem('favoriteMovies') || '[]');
             const filteredMovies = moviesData.movies.filter(filterFn);
 
-            section.innerHTML = filteredMovies.map(movie => `
-                <div class="movie">
-                    <img src="${movie.img}" class="w-100" alt="${movie.title}" 
-                         onclick="showMovieInfo(${movie.id})">
-                    <div class="movie-info">
-                        <h3>${movie.title.split(':')[1] ? movie.title.split(':')[1].trim() : movie.title}</h3>
-                        <p>${movie.rating} relevante</p>
+            section.innerHTML = filteredMovies.map(movie => {
+                const isFavorite = favoriteIds.includes(movie.id);
+                return `
+                    <div class="movie">
+                        <img src="${movie.img}" class="w-100" alt="${movie.title}" 
+                             onclick="showMovieInfo(${movie.id})">
+                        <div class="movie-info">
+                            <h3>${movie.title.split(':')[1] ? movie.title.split(':')[1].trim() : movie.title}</h3>
+                            <p>${movie.rating} relevante</p>
+                            <button class="btn btn-sm btn-outline-light" onclick="toggleFavorite(${movie.id})">
+                                <i class="bi bi-star${isFavorite ? '-fill' : ''}"></i> 
+                                ${isFavorite ? 'Remover dos Favoritos' : 'Favoritar'}
+                            </button>
+                        </div>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function showMovieInfo(movieId) {
@@ -372,6 +381,25 @@
             }
 
             window.location.href = `detalhes.html?id=${movieId}`;
+        }
+
+        function toggleFavorite(movieId) {
+            let favoriteIds = JSON.parse(localStorage.getItem('favoriteMovies') || '[]');
+            if (favoriteIds.includes(movieId)) {
+                favoriteIds = favoriteIds.filter(id => id !== movieId);
+            } else {
+                favoriteIds.push(movieId);
+            }
+            localStorage.setItem('favoriteMovies', JSON.stringify(favoriteIds));
+            const movie = moviesData.movies.find(m => m.id === movieId);
+            if (movie) {
+                alert(`${movie.title} foi ${favoriteIds.includes(movieId) ? 'adicionado aos' : 'removido dos'} favoritos!`);
+            }
+            loadMovies('lotrMovies', movie => [12, 13, 14].includes(movie.id));
+            loadMovies('hobbitMovies', movie => [15, 16, 17].includes(movie.id));
+            loadMovies('hpMovies', movie => [4, 5, 6, 7, 8, 9, 10, 11].includes(movie.id));
+            loadMovies('afMovies', movie => [1, 2, 3].includes(movie.id));
+            loadMovies('featuredMovies', movie => [14, 11, 17].includes(movie.id));
         }
 
         // Função para carregar o gráfico de gêneros
